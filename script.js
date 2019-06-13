@@ -44,6 +44,30 @@ window.addEventListener( 'DOMContentLoaded', () => {
       }
     });
 
+    document.querySelector('body').addEventListener( 'touchstart', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      mouseX_start = event.changedTouches[0].pageX;
+      mouseY_start = event.changedTouches[0].pageY;
+    });
+
+    document.querySelector('body').addEventListener( 'touchend', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      mouseX_end = event.changedTouches[0].pageX;
+      mouseY_end = event.changedTouches[0].pageY;
+
+      if( (mouseX_start - mouseX_end > 100) && ( (mouseY_start - mouseY_end < 100) && (mouseY_start - mouseY_end > -100) ) ){
+        moveLeft();
+      } else if( (mouseX_start - mouseX_end < -100) && ( (mouseY_start - mouseY_end < 100) && (mouseY_start - mouseY_end > -100) ) ){
+        moveRight();
+      } else if( ( (mouseX_start - mouseX_end < 100) && (mouseX_start - mouseX_end > -100) ) && (mouseY_start - mouseY_end > 100) ){
+        moveUp();
+      } else if( ( (mouseX_start - mouseX_end < 100) && (mouseX_start - mouseX_end > -100) ) && (mouseY_start - mouseY_end < -100) ){
+        moveDown();
+      }
+    });
+
     function moveLeft () {
       ctx.beginPath();
         ctx.clearRect(0, 0, 250, 250);
