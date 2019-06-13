@@ -1,0 +1,22 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+}
+
+#canvas{
+    background-color: rgb(51, 49, 59);
+    border: 3px solid rgb(62, 57, 82);
+}
